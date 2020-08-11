@@ -1,2 +1,2 @@
-# yyy-s-PythonFullStack
-杨阳羊的Python全栈开发学习笔记~
+# yyy-s-python
+杨阳羊的Python学习笔记~
