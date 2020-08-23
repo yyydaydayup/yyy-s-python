@@ -2,9 +2,47 @@
 
 # Matplotlib
 
-## 01.数据分析中常用图(基础)
+## 01.Matplotlib介绍
 
-### 1.1 折线图
+### 1.1 基本介绍
+
+`Matplotlib`是一个`Python`的`2D`绘图库，通过`Matplotlib`，开发者可以仅需要几行代码，便可以生成折线图，直方图，条形图，饼状图，散点图等。
+
+在anaconda的官网博客中，有这样一篇文章[Python Data Visualization 2018: Why So Many Libraries?](https://www.anaconda.com/blog/python-data-visualization-2018-why-so-many-libraries)，里面的一张图清晰地给出了Python数据可视化库的家族图谱，如下：
+
+<img src="matplotlib库.assets/anaconda数据可视化地图.png" alt="anaconda数据可视化地图" style="zoom: 80%;" />
+
+上图右上角紫色部分即我们将要学习的matplotlib家族，可以看到，matplotlib是诸多绘图库的爸爸~
+
+所以，加油认真学习吧！
+
+### 1.2 安装
+
+```shell
+pip install matplotlib  # 纯Python环境：使用pip
+
+conda install matplotlib  # Anaconda环境：使用conda
+```
+
+### 1.3 使用
+
+下面三个库在以后的案例中是通用的，均不再重复导入。
+
+```python
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+```
+
+
+
+----
+
+
+
+## 02.数据分析中常用图(基础)
+
+### 2.1 折线图
 
 折线图用于显示数据在一个连续的时间间隔或者时间跨度上的变化，它的特点是反映事物随时间或有序类别而变化的趋势。示例图如下：
 <img src="matplotlib库.assets/折线图示例.png" alt="折线图示例" style="zoom: 50%;" />
@@ -14,7 +52,7 @@
 1. 折线图适合`X`轴是一个==连续==**递增**或**递减**的，对于没有规律的，则不适合使用折线图，建议使用柱状图。
 2. 如果折线图条数过多，则不应该都绘制在一个图上。
 
-### 1.2 柱状图
+### 2.2 柱状图
 
 典型的柱状图（又名条形图），使用垂直或水平的柱子显示类别之间的数值比较。其中一个轴表示需要对比的分类，另一个轴代表相应的数值。
 
@@ -33,7 +71,7 @@
 
 3. 柱状图不适合表示趋势，如果想要表示趋势，应该使用折线图。
 
-### 1.3 直方图
+### 2.3 直方图
 
 直方图(Histogram)，又称质量分布图，是一种统计报告图，由一系列高度不等的条纹表示数据分布的情况。一般用横轴表示数据类型，纵轴表示分布情况。
 直方图是数值数据分布的精确图形表示。为了构建直方图，第一步是将值的范围分段，即将整个值的范围分成一系列间隔，然后计算每个间隔中有多少值。这些值通常被指定为连续的，不重叠的变量间隔。间隔必须**相邻**，并且通常是（但不是必须的）相等的大小。
@@ -60,7 +98,7 @@
 2. 用于观察异常或孤立数据。
 3. 抽取的样本数量过小，将会产生较大误差，可信度低，也就失去了统计的意义。因此，样本数不应少于50个。
 
-### 1.4 散点图
+### 2.4 散点图
 
 散点图也叫 X-Y 图，它将所有的数据以点的形式展现在直角坐标系上，以显示变量之间的相互影响程度，点的位置由变量的数值决定。
 
@@ -79,7 +117,7 @@
 1. 观察数据集的分布情况。
 2. 通过分析规律，根据样本数据特征计算出回归方程。
 
-### 1.5 饼状图
+### 2.5 饼状图
 
 饼状图通常用来描述量、频率和百分比之间的关系。在饼图中，每个扇区的弧长大小为其所表示的数量的比例。
 ![饼状图示例](matplotlib库.assets/饼状图示例.png)
@@ -89,7 +127,7 @@
 1. 展示多个分类的占比情况，分类数量建议不超过9个。
 2. 对于一些占比值非常接近的，不建议使用饼状图，可以使用柱状图。
 
-### 1.6 箱线图（加深理解）
+### 2.6 箱线图（加深理解）
 
 箱线图（Box-plot）又称为盒须图、盒式图或箱型图，是一种用作显示一组数据分散情况资料的统计图。因形状如箱子而得名。在各种领域也经常被使用，它主要用于反映原始数据分布的特征，还可以进行多组数据分布特征的比较。箱线图的绘制方法是：先找出一组数据的**上限值、下限值、中位数（Q2）和下四分位数（Q1）以及上四分位数（Q3）**；然后，连接两个四分位数画出箱子；再将最大值和最小值与箱子相连接，中位数在箱子中间。
 ![箱线图介绍](matplotlib库.assets/箱线图介绍.jpg)
@@ -115,43 +153,12 @@
 3. 利用箱线图比较几批数据的形状。
 4. 箱线图适合比较**多组数据**，如果知识要看一组数据的分布情况，建议使用直方图。
 
-### 1.7 更多参考
+### 2.7 更多参考
 
 [蚂蚁金服数据可视化方案-AntV-图表的分类和用法](https://antv-2018.alipay.com/zh-cn/vis/chart/index.html)
 
 
 
-## 02.Matplotlib介绍
-
-### 2.1 基本介绍
-
-`Matplotlib`是一个`Python`的`2D`绘图库，通过`Matplotlib`，开发者可以仅需要几行代码，便可以生成折线图，直方图，条形图，饼状图，散点图等。
-
-在anaconda的官网博客中，有这样一篇文章[Python Data Visualization 2018: Why So Many Libraries?](https://www.anaconda.com/blog/python-data-visualization-2018-why-so-many-libraries)，里面的一张图清晰地给出了Python数据可视化库的家族图谱，如下：
-
-<img src="matplotlib库.assets/anaconda数据可视化地图.png" alt="anaconda数据可视化地图" style="zoom: 80%;" />
-
-上图右上角紫色部分即我们将要学习的matplotlib家族，可以看到，matplotlib是诸多绘图库的爸爸~
-
-所以，加油认真学习吧！
-
-### 2.2 安装
-
-```shell
-pip install matplotlib  # 纯Python环境：使用pip
-
-conda install matplotlib  # Anaconda环境：使用conda
-```
-
-### 2.3 使用
-
-下面三个库在以后的案例中是通用的，均不再重复导入。
-
-```python
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-```
 
 ------------
 
@@ -953,6 +960,8 @@ plt.show()
 
 
 
+--------------
+
 ## 05.直方图
 
 直方图(Histogram)，又称质量分布图，是一种统计报告图，由一系列高度不等的条纹表示数据分布的情况。一般用横轴表示数据类型，纵轴表示分布情况。
@@ -1071,8 +1080,6 @@ plt.xticks(bins,['%.2f'%x for x in bins])
 plt.title('某班化学成绩直方图',fontproperties=font,size=20)
 plt.show()
 ```
-
-
 
 
 
@@ -1273,6 +1280,8 @@ exception_by_km = guazi[(guazi['hedge_rate'] > 0.9) & (guazi['km'] > 6)][['new_p
 
 
 
+-------------
+
 ## 07.饼图
 
 ### 7.1 绘制饼图
@@ -1363,7 +1372,7 @@ plt.show()
 
 
 
-
+-------------
 
 
 ## 08.箱线图
@@ -1481,9 +1490,9 @@ plt.show()
 
 
 
+------------
+
 ## 09.雷达图
-
-
 
 雷达图（Radar Chart）又被叫做蜘蛛网图，适用于显示三个或更多的维度的变量的强弱情况。比如英雄联盟中某个影响的属性（法术伤害，物理防御等），或者是某个企业在哪些业务方面的投入等，都可以用雷达图方便的表示。
 
@@ -1828,9 +1837,7 @@ Artist对象：https://matplotlib.org/tutorials/intermediate/artists.html
 
 
 
-
-
-
+-------------
 
 ## 11.多图布局
 
@@ -1996,6 +2003,8 @@ fig.tight_layout(h_pad=0,w_pad=0)
 
 
 
+
+-----------
 
 ## 12.matplotlib配置
 
